@@ -1,6 +1,6 @@
 # Ori Homework (DevOps)
 
-## Common
+## Prerequisites (Common)
 * Download `terraform` - https://www.terraform.io/downloads.html
 * Place `terraform` binary somewhere in `PATH`
 * Get a service principal with appropriate permissions from Azure CLI (create `app`, `sp`, assign `role` `Contributor`)
@@ -36,7 +36,7 @@ terraform apply my_ori_plan
 # Run your RDP client here with the given IP address and provided credentials
 ```
 
-## Inside VM
+## Inside VM (Common)
 ```PowerShell
 # Extension installed scripts here
 cd C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\0
@@ -51,4 +51,9 @@ New-LocalUser -Name MyAdmin1 -NoPassword
 # Two "*admin*" users, warning!
 New-LocalUser -Name MyAdmin2 -NoPassword
 .\ExampleScript.ps1
+```
+
+## Clean-up (Common)
+```
+terraform destroy
 ```
