@@ -1,8 +1,17 @@
 # Ori Homework (DevOps)
 
+## Overview
+* Fully automated (de-)provisioning via `terraform`
+* Script injection via Azure's Virtual Machine Extensions
+* Manual validation/interaction with VM via RDP
+
+## Scripts
+* PS Script Module - `scripts/Ori.LocalServerCmdlets.psm1`
+* PS ExampleScript - `scripts/ExampleScript.ps1`
+
 ## Prerequisites (Common)
 * Download `terraform` - https://www.terraform.io/downloads.html
-* Place `terraform` binary somewhere in `PATH`
+* Place `terraform(.exe)` binary somewhere in `PATH`
 * Get a service principal with appropriate permissions from Azure CLI (create `app`, `sp`, assign `role` `Contributor`)
 
 ## For Linux
@@ -29,9 +38,9 @@ $env:TF_VAR_azure_client_secret="XXX"
 $env:TF_VAR_azure_tenant_id="XXX"
 $env:TF_VAR_azure_vm_admin_password="XXX"
 
-terraform init
-terraform plan -out my_ori_plan
-terraform apply my_ori_plan
+terraform.exe init
+terraform.exe plan -out my_ori_plan
+terraform.exe apply my_ori_plan
 
 # Run your RDP client here with the given IP address and provided credentials
 ```
@@ -54,6 +63,10 @@ New-LocalUser -Name MyAdmin2 -NoPassword
 ```
 
 ## Clean-up (Common)
-```
+```bash
 terraform destroy
+```
+or
+```PowerShell
+terraform.exe destroy
 ```
